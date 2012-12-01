@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
   before_filter :find_location
-  
-  
+    
   def index
     @restaurants = Restaurant.all
 
@@ -11,8 +10,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # GET /restaurants/1
-  # GET /restaurants/1.json
   def show
     @restaurant = Restaurant.find(params[:id])
 
@@ -22,8 +19,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # GET /restaurants/new
-  # GET /restaurants/new.json
   def new
     @restaurant = Restaurant.new
 
@@ -33,13 +28,10 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # GET /restaurants/1/edit
   def edit
     @restaurant = Restaurant.find(params[:id])
   end
 
-  # POST /restaurants
-  # POST /restaurants.json
   def create
     @restaurant = @location.restaurants.create(params[:restaurant])
 
@@ -54,8 +46,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # PUT /restaurants/1
-  # PUT /restaurants/1.json
   def update
     @restaurant = Restaurant.find(params[:id])
 
@@ -69,9 +59,11 @@ class RestaurantsController < ApplicationController
       end
     end
   end
-
-  # DELETE /restaurants/1
-  # DELETE /restaurants/1.json
+  
+  #
+  # need to delete visits based on this restaurant!
+  #
+  
   def destroy
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
@@ -88,6 +80,4 @@ class RestaurantsController < ApplicationController
     @location = Location.find(params[:location_id])
   end
 
-  
-  
 end

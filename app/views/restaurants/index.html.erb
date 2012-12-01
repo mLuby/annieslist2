@@ -9,6 +9,7 @@
 
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @restaurants.each do |restaurant| %>
@@ -20,10 +21,20 @@
     
     <td><%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %></td>
     <td><%= link_to 'Destroy', location_restaurant_path(@location, restaurant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+    <% @visit = Visit.find_by_user_id_and_restaurant_id(current_user.id, restaurant.id) %>
+    <td><%= current_user.id %>,<%= restaurant.id %>,<%= if @visit == nil then 'nil' else @visit.id end %></td>
+
+    <td><% if @visit == nil %>
+    <%= link_to 'Unvisited', location_restaurant_visits_path(@location, restaurant), method: :create %>
+    <% else %>
+    <%= link_to 'Visited', location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete %>
+    <% end %></td>
+
   </tr>
 <% end %>
 </table>
-
 <br />
 
 <%= link_to 'New Restaurant', new_location_restaurant_path %>

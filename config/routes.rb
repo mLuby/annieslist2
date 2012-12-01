@@ -1,11 +1,12 @@
 Annieslist2::Application.routes.draw do
 
   resources :locations do
-    resources :restaurants
+    resources :restaurants do
+      resources :visits, :only => [:create, :destroy]
+    end
   end
 
   devise_for :users
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -65,6 +65,7 @@ class RestaurantsController < ApplicationController
   #
   
   def destroy
+
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
 

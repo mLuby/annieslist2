@@ -12,12 +12,12 @@
   <tr>
     <td><%= location.name %></td>
     <td><%= link_to 'Show', location_restaurants_path(location) %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= if current_user.admin? then link_to 'Edit', edit_location_path(location) end %></td>
+    <td><%= if current_user.admin? then link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } end %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Location', new_location_path %>
+<%= if current_user.admin? then link_to 'New Location', new_location_path end %>

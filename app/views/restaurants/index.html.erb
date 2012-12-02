@@ -1,35 +1,22 @@
-<h1>Listing restaurants</h1>
-
+<h1>Restaurants in <%= @location.name %></h1>
 <table>
+<% @location.restaurants.each do |restaurant| %>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @restaurants.each do |restaurant| %>
-  <tr>
-    <td><%= restaurant.name %></td>
-    <td><%= restaurant.address %></td>
-    <td><%= restaurant.phone %></td>
-    <td><%= restaurant.link %></td>
-    
-    <td><%= if current_user.admin? then link_to 'Edit', edit_location_restaurant_path(@location, restaurant) end %></td>
-    <td><%= if current_user.admin? then link_to 'Destroy', location_restaurant_path(@location, restaurant), method: :delete, data: { confirm: 'Are you sure?' } end %></td>
-
-
     <% @visit = Visit.find_by_user_id_and_restaurant_id(current_user.id, restaurant.id) %>
-
     <td><% if @visit == nil %>
-    <%= link_to 'Unvisited', location_restaurant_visits_path(@location, restaurant), method: :create %>
+    <%= link_to '[ ]', location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
     <% else %>
-    <%= link_to 'Visited', location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete %>
+    <%= link_to '[√]', location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace' %>
     <% end %></td>
+
+    <td class="restaurant"><a href="<%= restaurant.link %>"><%= restaurant.name %></a></td>
+    <td><a href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>"><%= restaurant.address %></a></td>
+    <td><%= restaurant.phone %></td>
+    
+    <% if current_user.admin? %>
+    <td><%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %></td>
+    <td><%= link_to 'Delete', location_restaurant_path(@location, restaurant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
 
   </tr>
 <% end %>
@@ -37,3 +24,5 @@
 <br />
 
 <%= if current_user.admin? then link_to 'New Restaurant', new_location_restaurant_path end %>
+<%= if current_user.admin? then ' |' end %>
+<%= link_to "Other locations", locations_path %>

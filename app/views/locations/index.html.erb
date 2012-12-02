@@ -1,23 +1,15 @@
-<h1>Listing locations</h1>
-
+<h1>Pick a location</h1>
 <table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @locations.each do |location| %>
   <tr>
-    <td><%= location.name %></td>
-    <td><%= link_to 'Show', location_restaurants_path(location) %></td>
-    <td><%= if current_user.admin? then link_to 'Edit', edit_location_path(location) end %></td>
-    <td><%= if current_user.admin? then link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } end %></td>
+    <td class="location"><%= link_to location.name, location_restaurants_path(location) %></td>
+    <% if current_user.admin? %>
+    <td><%= link_to 'Edit', edit_location_path(location) %></td>
+    <td><%= link_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
 <%= if current_user.admin? then link_to 'New Location', new_location_path end %>

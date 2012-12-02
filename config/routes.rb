@@ -6,7 +6,7 @@ Annieslist2::Application.routes.draw do
     end
   end
 
-  devise_for :users, :path_names => { :sign_up => "register"}
+  devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout"}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,8 +59,11 @@ Annieslist2::Application.routes.draw do
   # just remember to delete public/index.html.
 
 
-#  should be root :to => 'users#sign_in'
-  root :to => 'locations#index'
+
+  #root goes to login page
+  devise_scope :user do 
+    match "/" => "devise/sessions#new"
+  end 
 
   # See how all your routes lay out with "rake routes"
 

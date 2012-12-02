@@ -1,12 +1,25 @@
 body {
-  background-color: #fff;
-  color: #333;
+  background-color: #5973bd;
+  color: black;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
+  text-align: center;
+  padding-top: 5%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
-p, ol, ul, td {
+#user_nav{
+  text-align: right;
+  padding-right: 1%;
+}
+
+#content{
+  border: thick outset #79bd74;
+
+}
+
+p, ol, ul{
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -19,17 +32,18 @@ pre {
 }
 
 a {
-  color: #000;
+  text-decoration: none;
+  color: black;
   &:visited {
-    color: #666;
+    color: #333;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    text-decoration: underline;
   }
 }
 
 div {
+  background-color: white;
   &.field, &.actions {
     margin-bottom: 10px;
   }
@@ -37,6 +51,9 @@ div {
 
 #notice {
   color: green;
+}
+#alert {
+  color: red;
 }
 
 .field_with_errors {
@@ -69,9 +86,28 @@ div {
 }
 
 table{
-  background-color: orange;
+  text-align: left;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-td{
-  background-color: yellow; 
+h1{
+  font-size: 40pt;
+}
+
+.location{
+  font-size: 25pt;
+}
+
+.restaurant{
+  font-size: 25pt;
+}
+
+.monospace{
+  font-size: 25pt;
+  font-family: monospace;
+  &:hover {
+    text-decoration: none;
+  }
 }

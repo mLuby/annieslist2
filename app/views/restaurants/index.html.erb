@@ -11,7 +11,7 @@
 
     <td class="restaurant"><a href="<%= restaurant.link %>"><%= restaurant.name %></a></td>
     <td><a href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>"><%= restaurant.address %></a></td>
-    <td><%= restaurant.phone %></td>
+    <td><a href="tel:<%= restaurant.phone %>"><%= restaurant.phone %></a></td>
     
     <% if current_user.admin? %>
     <td><%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %></td>

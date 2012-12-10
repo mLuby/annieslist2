@@ -1,17 +1,17 @@
 <h1>Restaurants in <%= @location.name %></h1>
 <table>
-<% @location.restaurants.each do |restaurant| %>
+<% @location.restaurants.sort_by{|restaurant| restaurant.name}.each do |restaurant| %>
   <tr>
     <% @visit = Visit.find_by_user_id_and_restaurant_id(current_user.id, restaurant.id) %>
     <td><% if @visit == nil %>
-    <%= link_to '[ ]', location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
-    <% else %>
-    <%= link_to '[√]', location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace' %>
+    <%= link_to image_tag("http://3.bp.blogspot.com/-gIbY-Tqv34I/Tdm2v0h_brI/AAAAAAAAAkw/l7_ZNQQ0HiU/s1600/null.gif", :border => 0, :style => "width:50px;height:50px"), location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
+    <% else %>  
+    <%= link_to image_tag("http://foodrefashionista.files.wordpress.com/2012/05/check_mark_clip_art_hight.png", :border => 0, :style => "width:50px;height:50px"), location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace' %>
     <% end %></td>
 
     <td class="restaurant"><a href="<%= restaurant.link %>"><%= restaurant.name %></a></td>
     <td><a href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>"><%= restaurant.address %></a></td>
-    <td><a href="tel:<%= restaurant.phone %>">Callherok</a></td>
+    <td><a href="tel:<%= restaurant.phone %>">Call</a></td>
     
     <% if current_user.admin? %>
     <td><%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %></td>

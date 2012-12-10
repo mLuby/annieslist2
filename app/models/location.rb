@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
-  attr_accessible :name
-
   has_many :restaurants, :dependent => :destroy
+
+  accepts_nested_attributes_for :restaurants
+  
+  attr_accessible :name, :restaurants_attributes
 end

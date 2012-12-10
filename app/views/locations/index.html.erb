@@ -1,6 +1,6 @@
 <h1>Pick a location</h1>
 <table>
-<% @locations.each do |location| %>
+<% @locations.sort_by{|location| location.name}.each do |location| %>
   <tr>
     <td class="location"><%= link_to location.name, location_restaurants_path(location) %></td>
     <% if current_user.admin? %>

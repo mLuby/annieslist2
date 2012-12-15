@@ -1,7 +1,9 @@
 body {
-  background-color: #5973bd;
+  background-color: #3D85C6;
+//  background-color: #5973bd;
   color: black;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  //font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   text-align: center;
   padding-top: 5%;
@@ -12,18 +14,16 @@ body {
 
 #user_nav{
   text-align: right;
-  padding-right: 1%;
+  padding-right: 10px;
 }
 
 #content{
   border: thick outset #79bd74;
-
 }
 
 p, ol, ul{
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
 }
 
 pre {
@@ -94,22 +94,26 @@ table{
 }
 
 h1{
-  font-size: 40pt;
-  display: inline;
+  font-size: 30px;
+  margin-bottom: -5px;
 }
 
 .location{
-  font-size: 25pt;
+  font-size: 20px;
 }
 
 .restaurant{
-  font-size: 20pt;
+  font-size: 16px;
 }
 
 .monospace{
-  font-size: 25pt;
-  font-family: 'comic sans ms';
+  font-size: 23px;
   &:hover {
     text-decoration: none;
   }
+}
+
+#logo img{
+  float:left;
+  max-height: 30px;
 }

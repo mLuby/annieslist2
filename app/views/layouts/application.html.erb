@@ -23,6 +23,10 @@
 <body>
 
   <div id="content">
+    <div id="logo">
+      <%= image_tag("logo.png", :alt => "Restaurant Checklist Logo") %>
+    </div>
+    
     <div id="user_nav">
       <% if user_signed_in? %>
         <%= link_to current_user.email, edit_user_registration_path %> |
@@ -31,7 +35,7 @@
         <%= link_to "Login", new_user_session_path %> or <%= link_to "Register", new_user_registration_path %>
       <% end %>
     </div>
-    
+
     <%= yield %>
     
     <p class="notice"><%= notice %></p>

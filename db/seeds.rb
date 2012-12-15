@@ -9,7 +9,6 @@
 admin_user = User.find_or_create_by_email(
   :email => 'demo@email.com', 
   :password => 'demopass')
-#admin_user = User.new( :email => 'demo@email.com', :password => 'demopass' )
 admin_user.admin = true
 admin_user.save!
 

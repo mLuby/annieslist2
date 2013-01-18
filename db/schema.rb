@@ -57,4 +57,6 @@ ActiveRecord::Schema.define(:version => 20121201171811) do
     t.datetime "updated_at",    :null => false
   end
 
+  add_index "visits", ["user_id", "restaurant_id"], :name => "index_visits_on_user_id_and_restaurant_id"
+
 end

@@ -5,15 +5,15 @@
     <% @visit = Visit.find_by_user_id_and_restaurant_id(current_user.id, restaurant.id) %>
     <td><% if @visit == nil %>  
       <% if current_user.email == "test@mluby.com" %>
-        <%= link_to "☐", location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
-      <% else %>
         <%= link_to image_tag("null.png", :border => 0, :style => "height:30px"), location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
+      <% else %>
+        <%= link_to "☐", location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
       <% end %>
     <% else %>  
       <% if current_user.email == "test@mluby.com" %>
-        <%= link_to "☑", location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>    
+        <%= link_to image_tag("check.png", :border => 0, :style => "height:30px"), location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>    
       <% else %>
-        <%= link_to image_tag("check.png", :border => 0, :style => "height:30px"), location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace' %>
+        <%= link_to "☑", location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace' %>
       <% end %> 
     <% end %></td>
 

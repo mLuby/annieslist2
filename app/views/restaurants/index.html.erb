@@ -17,9 +17,9 @@
       <% end %> 
     <% end %></td>
 
-    <td class="restaurant"><a href="<%= restaurant.link %>"><%= restaurant.name %></a></td>
-    <td><a href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>"><%= restaurant.address %></a></td>
-    <td><a href="tel:<%= restaurant.phone %>"><%= restaurant.phone %></a></td>
+    <td class="restaurant"><a class="website" href="<%= restaurant.link %>" target="_blank"><%= restaurant.name %></a></td>
+    <td><a class="map" href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>" target="_blank"><%= restaurant.address %></a></td>
+    <td><a class="tel" href="tel:<%= restaurant.phone %>"><%= restaurant.phone %></a></td>
     
     <% if current_user.admin? %>
     <td><%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %></td>
@@ -33,4 +33,4 @@
 
 <%= if current_user.admin? then link_to 'New Restaurant', new_location_restaurant_path end %>
 <%= if current_user.admin? then ' |' end %>
-<%= link_to "Other locations", locations_path %>
+<%= link_to "Back", locations_path %>

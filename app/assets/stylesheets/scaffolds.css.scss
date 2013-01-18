@@ -1,6 +1,5 @@
 body {
   background-color: #3D85C6;
-//  background-color: #5973bd;
   color: black;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   //font-family: verdana, arial, helvetica, sans-serif;
@@ -111,9 +110,17 @@ h1{
   &:hover {
     text-decoration: none;
   }
+  img{
+    width: 30px;
+    height: 30px;
+  }
 }
 
 #logo img{
   float:left;
-  max-height: 30px;
+  height: 30px;
+}
+
+.tel{
+	margin-left:10px;
 }

@@ -9,7 +9,7 @@ class VisitsController < ApplicationController
 
     respond_to do |format|
       if @visit.save
-        format.html { redirect_to location_restaurants_path(@location) }
+        format.html { redirect_to location_restaurants_path(@location) + "##{@restaurant.id.to_s}" }
         format.json { render json: @visit, status: :created, location: @visit }
       else
         format.html { render action: "new" }
@@ -23,7 +23,7 @@ class VisitsController < ApplicationController
     @visit.destroy
 
     respond_to do |format|
-      format.html { redirect_to location_restaurants_path(@location) }
+      format.html { redirect_to location_restaurants_path(@location) + "##{@restaurant.id.to_s}" }
       format.json { head :no_content }
     end
   end

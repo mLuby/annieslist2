@@ -21,26 +21,37 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <% if false #user_signed_in? %>
+	<div id="welcome">Welcome, <%= current_user.email %>!</div>
+	<% end %>
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+	
+    <div id="logo">
+	  <% if user_signed_in? %>
+  	    <a href="<%= locations_path %>" title="Click for all locations"><span>☑<strong>RestaurantChecklist</strong>.net</span></a>
+	  <% else %>
+	    <span>☑<strong>RestaurantChecklist</strong>.net</span>
+	  <% end %>
+    </div>
 
   <div id="content">
-    <div id="logo">
-      <%= link_to image_tag("logo.png", :alt => "Restaurant Checklist Logo"), locations_path %>
-    </div>
+
     
     <div id="user_nav">
+	  <%= link_to "Back", :back, :title => "Go back" %> |
+	  <a href="mailto:info@restaurantchecklist.net" title="Composes an email">Contact Us</a> |
       <% if user_signed_in? %>
-        <%= link_to current_user.email, edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, :method => 'DELETE' %>
+		<% # current_user.email %>
+        <%= link_to "Account", edit_user_registration_path, :title => current_user.email %> |
+        <%= link_to "Logout", destroy_user_session_path, :method => 'DELETE', :title => "Come again soon!" %>
       <% else %>
-        <%= link_to "Login", new_user_session_path %> or <%= link_to "Register", new_user_registration_path %>
+        <%= link_to "Login", new_user_session_path, :title => "For returning users" %> or <%= link_to "Register", new_user_registration_path, :title => "For new users" %>
       <% end %>
     </div>
 
     <%= yield %>
     
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <a href="mailto:info@restaurantchecklist.net">Contact Us</a>
   </div>
 </body>
 </html>

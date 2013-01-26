@@ -1,8 +1,11 @@
+//ERROR MESSAGES color: red; font-weight: bold;
+
+
 body {
-  background-color: #3D85C6;
+  background-color: #FFCC5E;
+//#3D85C6; is the blue
   color: black;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  //font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   text-align: center;
   padding-top: 5%;
@@ -12,12 +15,12 @@ body {
 }
 
 #user_nav{
-  text-align: right;
+  text-align: center;
   padding-right: 10px;
 }
 
 #content{
-  border: thick outset #79bd74;
+//  border: thick outset #79bd74;
 }
 
 p, ol, ul{
@@ -43,7 +46,7 @@ a {
 }
 
 div {
-  background-color: white;
+  background-color: #FFCC5E;
   &.field, &.actions {
     margin-bottom: 10px;
   }
@@ -51,9 +54,11 @@ div {
 
 #notice {
   color: green;
-}
+	text-align: left;
+	}
 #alert {
   color: red;
+	text-align: left;
 }
 
 .field_with_errors {
@@ -116,11 +121,20 @@ h1{
   }
 }
 
-#logo img{
-  float:left;
-  height: 30px;
+#logo{
+	font-size: 26pt;
+	background-color: #FFCC5E;
+//	background-color: #3d85C6;
+	a{
+	  color: black;
+	}
 }
 
 .tel{
 	margin-left:10px;
+}
+
+#welcome{
+	text-align:left;
+	margin-left: 90px;
 }

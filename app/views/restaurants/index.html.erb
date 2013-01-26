@@ -1,29 +1,46 @@
 <h1>Restaurants in <%= @location.name %></h1>
 <table>
 <% @location.restaurants.sort_by{|restaurant| restaurant.name}.each do |restaurant| %>
-  <tr>
+  <tr id="<%= restaurant.id %>">
     <% @visit = Visit.find_by_user_id_and_restaurant_id(current_user.id, restaurant.id) %>
     <td><% if @visit == nil %>  
-      <% if current_user.email == "test@mluby.com" %>
-        <%= link_to image_tag("null.png", :border => 0, :style => "height:30px"), location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
-      <% else %>
-        <%= link_to "☐", location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>
-      <% end %>
+      <%= link_to "☐", location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace', :title => "Click to mark visited" %>
     <% else %>  
-      <% if current_user.email == "test@mluby.com" %>
-        <%= link_to image_tag("check.png", :border => 0, :style => "height:30px"), location_restaurant_visits_path(@location, restaurant), method: :create, :class => 'monospace' %>    
-      <% else %>
-        <%= link_to "☑", location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace' %>
-      <% end %> 
+      <%= link_to "☑", location_restaurant_visit_path(@location, restaurant,@visit.id), method: :delete, :class => 'monospace', :title => "Click to mark unvisited" %>
     <% end %></td>
 
-    <td class="restaurant"><a class="website" href="<%= restaurant.link %>" target="_blank"><%= restaurant.name %></a></td>
-    <td><a class="map" href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>" target="_blank"><%= restaurant.address %></a></td>
-    <td><a class="tel" href="tel:<%= restaurant.phone %>"><%= restaurant.phone %></a></td>
+    <td class="restaurant">
+      <% if restaurant.link? %>
+	    <a class="website" href="<%= restaurant.link %>" target="_blank" title="Click to open restaurant's website in new window">
+          <%= restaurant.name %>
+        </a>
+      <% else %>
+        <%= restaurant.name %>
+      <% end %>
+    </td>
+
+    <td>
+	  <% if restaurant.phone? %>
+	    <a class="map" href="https://maps.google.com/maps?q=<%= restaurant.name %>+<%= restaurant.address %>" target="_blank" title="Click to view map in new window">
+	      <%= restaurant.address %>
+	    </a>
+      <% end %>
+	</td>
+    <td>
+	  <% if restaurant.phone? %>
+	    <a class="tel" href="tel:<%= restaurant.phone %>" title="On mobile, tap to call">
+	      <%= restaurant.phone %>
+	    </a>
+	  <% end %>
+	</td>
     
     <% if current_user.admin? %>
-    <td><%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %></td>
-    <td><%= link_to 'Delete', location_restaurant_path(@location, restaurant), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>
+        <%= link_to 'Edit', edit_location_restaurant_path(@location, restaurant) %>
+      </td>
+      <td>
+        <%= link_to 'Delete', location_restaurant_path(@location, restaurant), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     <% end %>
 
   </tr>
@@ -33,4 +50,4 @@
 
 <%= if current_user.admin? then link_to 'New Restaurant', new_location_restaurant_path end %>
 <%= if current_user.admin? then ' |' end %>
-<%= link_to "Back", locations_path %>
+<%= link_to "Back", locations_path, :title => "Back to all locations" %>

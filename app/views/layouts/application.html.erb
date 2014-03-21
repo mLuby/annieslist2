@@ -21,6 +21,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
     <% if false #user_signed_in? %>
 	<div id="welcome">Welcome, <%= current_user.email %>!</div>
 	<% end %>
@@ -51,7 +52,7 @@
     </div>
 
     <%= yield %>
-    
+    </div>
   </div>
 </body>
 </html>

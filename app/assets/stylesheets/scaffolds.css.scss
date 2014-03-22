@@ -2,9 +2,7 @@
 
 
 body {
-  background-image: url('http://thepatternlibrary.com/img/u.png');
-  //background-color: #FFCC5E;
-  //#3D85C6; is the blue
+  background-image: url('orange-pattern.png');
   color: black;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   font-size: 13px;
@@ -52,7 +50,6 @@ a {
 }
 
 div {
-  background-color: #FFCC5E;
   &.field, &.actions {
     margin-bottom: 10px;
   }
@@ -60,11 +57,11 @@ div {
 
 #notice {
   color: green;
-	text-align: left;
-	}
+  text-align: left;
+  }
 #alert {
   color: red;
-	text-align: left;
+  text-align: left;
 }
 
 .field_with_errors {
@@ -128,19 +125,17 @@ h1{
 }
 
 #logo{
-	font-size: 26pt;
-	background-color: #FFCC5E;
-//	background-color: #3d85C6;
-	a{
-	  color: black;
-	}
+  font-size: 26pt;
+  a{
+    color: black;
+  }
 }
 
 .tel{
-	margin-left:10px;
+  margin-left:10px;
 }
 
 #welcome{
-	text-align:left;
-	margin-left: 90px;
+  text-align:left;
+  margin-left: 90px;
 }
